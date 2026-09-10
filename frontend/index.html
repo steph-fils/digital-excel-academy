@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Excel Academy - Votre compétence, votre engagement</title>
+    <!-- Tailwind CSS pour un design moderne de 2026 -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome pour les icônes -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased selection:bg-yellow-400 selection:text-slate-900">
+
+    <!-- 1. TOP BAR D'INFORMATION -->
+    <div class="bg-slate-900 text-slate-300 text-xs sm:text-sm py-2.5 px-4 border-b border-slate-800">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-2">
+            <div class="flex items-center space-x-2">
+                <span class="bg-yellow-500/20 text-yellow-400 text-xs px-2.5 py-0.5 rounded-full font-semibold border border-yellow-500/30">Devise</span>
+                <span class="italic font-medium text-slate-200">"Votre compétence, votre engagement"</span>
+            </div>
+            <div class="flex items-center space-x-6 text-xs sm:text-sm">
+                <a href="mailto:DigitalExcelAcademy@gmail.com" class="hover:text-yellow-400 transition flex items-center gap-1.5">
+                    <i class="fa-solid fa-envelope text-yellow-400"></i> DigitalExcelAcademy@gmail.com
+                </a>
+                <a href="https://facebook.com" target="_blank" class="hover:text-yellow-400 transition flex items-center gap-1.5">
+                    <i class="fa-brands fa-facebook text-blue-400"></i> Digital Excel Academy
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. NAVBAR MODERNE -->
+    <header class="bg-white/90 backdrop-blur-md sticky top-0 z-40 border-b border-slate-200/80 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex justify-between items-center">
+            <a href="#" class="flex items-center space-x-3 group">
+                <div class="bg-gradient-to-tr from-blue-900 to-indigo-700 text-yellow-400 font-black text-xl w-11 h-11 rounded-xl flex items-center justify-center shadow-md shadow-blue-900/20 group-hover:scale-105 transition">
+                    DEA
+                </div>
+                <div class="flex flex-col">
+                    <span class="text-xl font-extrabold tracking-tight text-slate-900 leading-none">Digital Excel</span>
+                    <span class="text-xs font-bold tracking-widest text-yellow-600 uppercase">Academy</span>
+                </div>
+            </a>
+            
+            <nav class="hidden md:flex items-center space-x-8 font-semibold text-sm text-slate-700">
+                <a href="#accueil" class="hover:text-blue-900 transition">Accueil</a>
+                <a href="#galerie" class="hover:text-blue-900 transition">En Académie</a>
+                <a href="#formations" class="hover:text-blue-900 transition">Formations</a>
+                <a href="#centres" class="hover:text-blue-900 transition">Nos Centres</a>
+                <a href="#inscription" class="hover:text-blue-900 transition">Inscription</a>
+            </nav>
+
+            <a href="https://wa.me/237600000000" target="_blank" class="bg-emerald-600 hover:bg-emerald-500 text-white font-bold px-5 py-2.5 rounded-xl text-sm shadow-lg shadow-emerald-600/20 flex items-center gap-2 transition hover:-translate-y-0.5">
+                <i class="fa-brands fa-whatsapp text-lg"></i> Contact WhatsApp
+            </a>
+        </div>
+    </header>
+
+    <!-- 3. BANNIÈRE PRINCIPALE (HERO SECTION) -->
+    <section id="accueil" class="relative bg-slate-900 text-white py-20 lg:py-28 px-4 overflow-hidden">
+        <div class="absolute inset-0 opacity-20 bg-[radial-gradient(#3b82f6_1px,transparent_1px)] [background-size:16px_16px]"></div>
+        <div class="max-w-7xl mx-auto relative z-10 grid lg:grid-cols-2 gap-12 items-center">
+            <div class="space-y-6 text-center lg:text-left">
+                <div class="inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 text-blue-300 font-semibold px-4 py-1.5 rounded-full text-xs uppercase tracking-wider">
+                    <i class="fa-solid fa-graduation-cap"></i> Centre de Formation Pratique
+                </div>
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight">
+                    Développez des compétences réelles et immédiatement valorisables.
+                </h1>
+                <p class="text-slate-300 text-base sm:text-lg max-w-xl mx-auto lg:mx-0">
+                    Rejoignez des sessions 100% pratiques à Douala et Yaoundé. Maîtrisez la bureautique, le design, le e-commerce et le marketing digital.
+                </p>
+                <div class="pt-2 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                    <a href="#inscription" class="bg-yellow-500 hover:bg-yellow-400 text-slate-950 font-bold px-8 py-4 rounded-xl shadow-xl shadow-yellow-500/10 transition hover:-translate-y-0.5 text-center">
+                        S'inscrire à une session
+                    </a>
+                    <a href="#formations" class="bg-slate-800 hover:bg-slate-700 border border-slate-700 text-white font-semibold px-8 py-4 rounded-xl transition text-center">
+                        Découvrir les programmes
+                    </a>
+                </div>
+            </div>
+
+            <!-- Image mise en avant dans la bannière (Photo 5) -->
+            <div class="relative">
+                <div class="relative rounded-3xl overflow-hidden shadow-2xl border border-slate-700/50 group">
+                    <img src="image/5.jpeg" alt="Étudiant Digital Excel Academy" class="w-full h-[420px] object-cover group-hover:scale-105 transition duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
+                    <div class="absolute bottom-6 left-6 right-6 p-4 bg-white/10 backdrop-blur-md rounded-2xl border border-white/20">
+                        <p class="text-sm font-semibold text-white">Pratique sur ordinateur & suivi personnalisé</p>
+                        <p class="text-xs text-slate-300">Formations adaptées aux exigences professionnelles actuelles.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. GALERIE PHOTOS RÉELLES DES ÉTUDIANTS -->
+    <section id="galerie" class="py-20 max-w-7xl mx-auto px-4 sm:px-6">
+        <div class="text-center max-w-2xl mx-auto mb-14 space-y-3">
+            <span class="text-blue-900 font-bold text-xs uppercase tracking-widest bg-blue-50 px-3 py-1 rounded-md">Immersion en classe</span>
+            <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900">Nos étudiants en pleine formation</h2>
+            <p class="text-slate-600">Des travaux en groupe, de la pratique guidée et un environnement de travail motivant.</p>
+        </div>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Carte Photo 1 -->
+            <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition border border-slate-200/80 group">
+                <div class="h-64 overflow-hidden relative">
+                    <img src="image/1.jpeg" alt="Session d'apprentissage en groupe" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                </div>
+                <div class="p-5">
+                    <h3 class="font-bold text-lg text-slate-900">Ateliers Pratiques & Échanges</h3>
+                    <p class="text-xs text-slate-500 mt-1">Accompagnement continu et apprentissage collaboratif.</p>
+                </div>
+            </div>
+
+            <!-- Carte Photo 2 -->
+            <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition border border-slate-200/80 group">
+                <div class="h-64 overflow-hidden relative">
+                    <img src="image/2.jpeg" alt="Étudiants concentrés en cours" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                </div>
+                <div class="p-5">
+                    <h3 class="font-bold text-lg text-slate-900">Concentration & Rigueur</h3>
+                    <p class="text-xs text-slate-500 mt-1">Des modules structurés pour une assimilation rapide.</p>
+                </div>
+            </div>
+
+            <!-- Carte Photo 4 -->
+            <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition border border-slate-200/80 group sm:col-span-2 lg:col-span-1">
+                <div class="h-64 overflow-hidden relative">
+                    <img src="image/4.jpeg" alt="Exercices sur ordinateur" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                </div>
+                <div class="p-5">
+                    <h3 class="font-bold text-lg text-slate-900">Pratique sur Ordinateur</h3>
+                    <p class="text-xs text-slate-500 mt-1">Mise en situation réelle sur les logiciels clés.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. DOMAINES DE FORMATION -->
+    <section id="formations" class="py-20 bg-slate-100/70 border-y border-slate-200/60">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="text-center max-w-2xl mx-auto mb-14 space-y-3">
+                <span class="text-yellow-700 font-bold text-xs uppercase tracking-widest bg-yellow-100 px-3 py-1 rounded-md">Programmes disponibles</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900">Nos 6 Pôles d'Excellence</h2>
+                <p class="text-slate-600">Sélectionnez la formation qui correspond à votre projet professionnel.</p>
+            </div>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Bureautique -->
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:border-blue-500/40 transition">
+                    <div class="w-12 h-12 bg-blue-100 text-blue-900 rounded-xl flex items-center justify-center text-xl font-bold mb-4">
+                        <i class="fa-solid fa-file-excel"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">Bureautique</h3>
+                    <p class="text-sm text-slate-600 mb-4">Word, Excel avancé, PowerPoint et gestion administrative numérique.</p>
+                    <span class="inline-block bg-slate-100 text-slate-700 text-xs px-3 py-1 rounded-full font-medium">Secrétariat & Admin</span>
+                </div>
+
+                <!-- Infographie -->
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:border-purple-500/40 transition">
+                    <div class="w-12 h-12 bg-purple-100 text-purple-900 rounded-xl flex items-center justify-center text-xl font-bold mb-4">
+                        <i class="fa-solid fa-palette"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">Infographie</h3>
+                    <p class="text-sm text-slate-600 mb-4">Création d'affiches, logos, cartes de visite et chartes graphiques.</p>
+                    <span class="inline-block bg-purple-50 text-purple-700 text-xs px-3 py-1 rounded-full font-medium">Design Graphique</span>
+                </div>
+
+                <!-- Montage Vidéo -->
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:border-red-500/40 transition">
+                    <div class="w-12 h-12 bg-red-100 text-red-900 rounded-xl flex items-center justify-center text-xl font-bold mb-4">
+                        <i class="fa-solid fa-video"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">Montage Vidéo</h3>
+                    <p class="text-sm text-slate-600 mb-4">Édition vidéo, cadrage, effets visuels et formats réseaux sociaux.</p>
+                    <span class="inline-block bg-red-50 text-red-700 text-xs px-3 py-1 rounded-full font-medium">Création de Contenu</span>
+                </div>
+
+                <!-- Marketing Digital -->
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:border-emerald-500/40 transition">
+                    <div class="w-12 h-12 bg-emerald-100 text-emerald-900 rounded-xl flex items-center justify-center text-xl font-bold mb-4">
+                        <i class="fa-solid fa-chart-line"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">Marketing Digital</h3>
+                    <p class="text-sm text-slate-600 mb-4">Community Management, publicités ciblées Meta Ads & stratégie de vente.</p>
+                    <span class="inline-block bg-emerald-50 text-emerald-700 text-xs px-3 py-1 rounded-full font-medium">E-Business</span>
+                </div>
+
+                <!-- E-commerce -->
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:border-amber-500/40 transition">
+                    <div class="w-12 h-12 bg-amber-100 text-amber-900 rounded-xl flex items-center justify-center text-xl font-bold mb-4">
+                        <i class="fa-solid fa-store"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">E-Commerce</h3>
+                    <p class="text-sm text-slate-600 mb-4">Création de boutiques en ligne et vente automatisée de produits.</p>
+                    <span class="inline-block bg-amber-50 text-amber-800 text-xs px-3 py-1 rounded-full font-medium">Vente en Ligne</span>
+                </div>
+
+                <!-- Achat en Chine -->
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:border-indigo-500/40 transition">
+                    <div class="w-12 h-12 bg-indigo-100 text-indigo-900 rounded-xl flex items-center justify-center text-xl font-bold mb-4">
+                        <i class="fa-solid fa-plane-arrival"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">Achat en Chine</h3>
+                    <p class="text-sm text-slate-600 mb-4">Commandes directes sur plateformes (1688, Alibaba) et suivi logistique.</p>
+                    <span class="inline-block bg-indigo-50 text-indigo-700 text-xs px-3 py-1 rounded-full font-medium">Importation</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. NOS CENTRES DE FORMATION -->
+    <section id="centres" class="py-20 max-w-7xl mx-auto px-4 sm:px-6">
+        <div class="text-center max-w-2xl mx-auto mb-14 space-y-3">
+            <span class="text-blue-900 font-bold text-xs uppercase tracking-widest bg-blue-50 px-3 py-1 rounded-md">Implantations</span>
+            <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900">Où nous trouver ?</h2>
+            <p class="text-slate-600">Des salles équipées accueillantes à Douala et Yaoundé.</p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8">
+            <!-- Douala -->
+            <div class="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm flex items-start space-x-5 hover:border-blue-900 transition">
+                <div class="w-14 h-14 bg-blue-900 text-yellow-400 rounded-2xl flex items-center justify-center text-2xl flex-shrink-0 shadow-lg shadow-blue-900/10">
+                    <i class="fa-solid fa-location-dot"></i>
+                </div>
+                <div class="space-y-2">
+                    <h3 class="text-2xl font-bold text-slate-900">Centre de Douala</h3>
+                    <p class="text-slate-800 font-semibold text-lg">Carrefour Matango</p>
+                    <p class="text-sm text-slate-500">Sessions pratiques quotidiennes, équipement informatique sur place.</p>
+                </div>
+            </div>
+
+            <!-- Yaoundé -->
+            <div class="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm flex items-start space-x-5 hover:border-yellow-500 transition">
+                <div class="w-14 h-14 bg-yellow-500 text-slate-950 rounded-2xl flex items-center justify-center text-2xl flex-shrink-0 shadow-lg shadow-yellow-500/10">
+                    <i class="fa-solid fa-location-dot"></i>
+                </div>
+                <div class="space-y-2">
+                    <h3 class="text-2xl font-bold text-slate-900">Centre de Yaoundé</h3>
+                    <p class="text-slate-800 font-semibold text-lg">Entre Terre Rouge et Damas</p>
+                    <p class="text-sm text-slate-500">Formations modulaires et ateliers pratiques intensifs.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   <!-- 7. FORMULAIRE D'INSCRIPTION -->
+<section id="inscription" class="py-20 bg-slate-900 text-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6">
+        <div class="bg-slate-800/80 p-8 sm:p-12 rounded-3xl border border-slate-700 shadow-2xl backdrop-blur-sm">
+            <div class="text-center mb-10 space-y-2">
+                <h2 class="text-3xl font-extrabold">Formulaire de Pré-inscription</h2>
+                <p class="text-slate-400 text-sm">Remplissez ce formulaire et notre équipe vous recontactera sous 24h.</p>
+            </div>
+
+            <form id="formInscription" class="space-y-6">
+                <div class="grid sm:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Nom complet</label>
+                        <input type="text" id="nom" name="nom" required placeholder="Votre nom" class="w-full px-4 py-3.5 rounded-xl bg-slate-900 border border-slate-700 text-white placeholder-slate-500 focus:outline-none focus:border-yellow-500 transition">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Numéro Téléphone / WhatsApp</label>
+                        <input type="tel" id="telephone" name="telephone" required placeholder="Ex: 600000000" class="w-full px-4 py-3.5 rounded-xl bg-slate-900 border border-slate-700 text-white placeholder-slate-500 focus:outline-none focus:border-yellow-500 transition">
+                    </div>
+                </div>
+
+                <div class="grid sm:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Formation choisie</label>
+                        <select id="formation" name="formation" required class="w-full px-4 py-3.5 rounded-xl bg-slate-900 border border-slate-700 text-white focus:outline-none focus:border-yellow-500 transition">
+                            <option value="">Choisir un programme</option>
+                            <option value="Bureautique">Bureautique</option>
+                            <option value="Infographie">Infographie</option>
+                            <option value="Montage Vidéo">Montage Vidéo</option>
+                            <option value="Marketing Digital">Marketing Digital</option>
+                            <option value="E-Commerce">E-Commerce</option>
+                            <option value="Achat en Chine">Achat en Chine</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Ville de formation</label>
+                        <select id="ville" name="ville" required class="w-full px-4 py-3.5 rounded-xl bg-slate-900 border border-slate-700 text-white focus:outline-none focus:border-yellow-500 transition">
+                            <option value="Douala">Douala (Carrefour Matango)</option>
+                            <option value="Yaoundé">Yaoundé (Terre Rouge Damas)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button type="submit" class="w-full bg-yellow-500 hover:bg-yellow-400 text-slate-950 font-bold py-4 rounded-xl shadow-lg transition">
+                    Envoyer ma demande d'inscription
+                </button>
+            </form>
+        </div>
+    </div>
+</section>
+
+    <!-- BOUTON WHATSAPP FLOTTANT -->
+    <a href="https://wa.me/237600000000" target="_blank" class="fixed bottom-6 right-6 bg-emerald-500 hover:bg-emerald-600 text-white p-4 rounded-full shadow-2xl z-50 transition transform hover:scale-110 flex items-center justify-center">
+        <i class="fa-brands fa-whatsapp text-3xl"></i>
+    </a>
+
+    <!-- PIED DE PAGE -->
+    <footer class="bg-slate-950 text-slate-400 py-10 px-4 border-t border-slate-900 text-center space-y-3">
+        <p class="text-white font-bold text-lg">Digital Excel Academy</p>
+        <p class="text-xs italic text-yellow-500">"Votre compétence, votre engagement"</p>
+        <p class="text-xs text-slate-600">&copy; 2026 Digital Excel Academy. Tous droits réservés.</p>
+    </footer>
+<script>
+  const form = document.getElementById('formInscription');
+
+  form.addEventListener('submit', async function(event) {
+    event.preventDefault();
+
+    // 1. Récupération des données du formulaire
+    const donnees = {
+      nom: document.getElementById('nom').value,
+      telephone: document.getElementById('telephone').value,
+      formation: document.getElementById('formation').value,
+      ville: document.getElementById('ville').value
+    };
+
+    try {
+      // 2. Envoi des données vers le serveur Node.js (Backend)
+      const response = await fetch('http://localhost:5000/api/inscription', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(donnees)
+      });
+
+      const resultat = await response.json();
+
+      if (response.ok) {
+        alert(`Merci ${donnees.nom} ! Votre pré-inscription a été enregistrée avec succès.`);
+        form.reset();
+      } else {
+        alert("Une erreur est survenue lors de l'enregistrement.");
+      }
+    } catch (error) {
+      console.error("Erreur de connexion au serveur :", error);
+      alert("Impossible de contacter le serveur. Assurez-vous que le backend est lancé.");
+    }
+  });
+</script>
+</body>
+</html>

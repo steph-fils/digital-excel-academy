@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administration - Digital Excel Academy</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-900 text-slate-100 min-h-screen p-6">
+
+    <!-- 1. Formulaire de connexion -->
+    <div id="zoneConnexion" class="max-w-md mx-auto mt-20 bg-slate-800 p-8 rounded-2xl border border-slate-700 shadow-xl">
+        <h2 class="text-2xl font-bold text-center text-white mb-6">Connexion Admin</h2>
+        <div class="space-y-4">
+            <div>
+                <label class="block text-sm font-medium mb-1">Mot de passe secret</label>
+                <input type="password" id="motDePasse" placeholder="Entrez le mot de passe" class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 text-white focus:outline-none focus:border-yellow-500">
+            </div>
+            <button onclick="verifierMotDePasse()" class="w-full bg-yellow-500 hover:bg-yellow-400 text-slate-950 font-bold py-3 rounded-xl transition">
+                Accéder au tableau de bord
+            </button>
+            <p id="erreurPass" class="text-red-400 text-sm text-center hidden">Mot de passe incorrect !</p>
+        </div>
+    </div>
+
+    <!-- 2. Tableau de bord -->
+    <div id="zoneAdmin" class="max-w-6xl mx-auto hidden">
+        <div class="flex flex-col md:flex-row justify-between items-center mb-8 gap-4">
+            <div>
+                <h1 class="text-3xl font-extrabold text-white">Espace Administration</h1>
+                <p class="text-slate-400 text-sm">Gestion des pré-inscriptions des étudiants</p>
+            </div>
+            <div class="flex gap-3">
+                <button onclick="exporterEnCSV()" class="bg-green-600 hover:bg-green-500 text-white font-semibold px-4 py-2.5 rounded-xl transition flex items-center gap-2">
+                    📊 Exporter sur Excel (CSV)
+                </button>
+                <button onclick="chargerInscriptions()" class="bg-slate-800 hover:bg-slate-700 text-white px-4 py-2.5 rounded-xl border border-slate-700 transition">
+                    🔄 Rafraîchir
+                </button>
+            </div>
+        </div>
+
+        <div class="bg-slate-800 rounded-2xl border border-slate-700 overflow-hidden shadow-xl">
+            <div class="overflow-x-auto">
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr class="bg-slate-900/50 text-slate-400 text-xs uppercase tracking-wider border-b border-slate-700">
+                            <th class="p-4">Date</th>
+                            <th class="p-4">Nom complet</th>
+                            <th class="p-4">Téléphone</th>
+                            <th class="p-4">Formation</th>
+                            <th class="p-4">Ville</th>
+                            <th class="p-4">Statut</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableauInscriptions" class="divide-y divide-slate-700 text-sm">
+                        <tr><td colspan="6" class="p-4 text-center text-slate-400">Chargement...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const CODE_SECRET = "admin123";
+        let listeInscriptions = [];
+
+        function verifierMotDePasse() {
+            const saisie = document.getElementById('motDePasse').value;
+            const erreur = document.getElementById('erreurPass');
+
+            if (saisie === CODE_SECRET) {
+                document.getElementById('zoneConnexion').classList.add('hidden');
+                document.getElementById('zoneAdmin').classList.remove('hidden');
+                chargerInscriptions();
+            } else {
+                erreur.classList.remove('hidden');
+            }
+        }
+
+        async function chargerInscriptions() {
+            try {
+                const res = await fetch('http://localhost:5000/api/inscriptions');
+                listeInscriptions = await res.json();
+
+                const tbody = document.getElementById('tableauInscriptions');
+                tbody.innerHTML = '';
+
+                if (listeInscriptions.length === 0) {
+                    tbody.innerHTML = '<tr><td colspan="6" class="p-4 text-center text-slate-400">Aucune inscription pour le moment.</td></tr>';
+                    return;
+                }
+
+                listeInscriptions.slice().reverse().forEach(item => {
+                    const statutActuel = item.statut || 'En attente';
+                    
+                    const row = `<tr class="hover:bg-slate-700/50 transition border-b border-slate-700">
+                        <td class="p-4 text-slate-400 text-xs">${item.date || '-'}</td>
+                        <td class="p-4 font-semibold text-white">${item.nom}</td>
+                        <td class="p-4 text-yellow-400 font-mono">${item.telephone}</td>
+                        <td class="p-4">${item.formation}</td>
+                        <td class="p-4">${item.ville}</td>
+                        <td class="p-4">
+                            <select onchange="changerStatut(${item.id}, this.value)" class="bg-slate-900 border border-slate-600 rounded-lg text-xs p-2 text-white focus:outline-none focus:border-yellow-500">
+                                <option value="En attente" ${statutActuel === 'En attente' ? 'selected' : ''}>🟡 En attente</option>
+                                <option value="Contacté" ${statutActuel === 'Contacté' ? 'selected' : ''}>🟢 Contacté</option>
+                                <option value="Annulé" ${statutActuel === 'Annulé' ? 'selected' : ''}>🔴 Annulé</option>
+                            </select>
+                        </td>
+                    </tr>`;
+                    tbody.innerHTML += row;
+                });
+            } catch (err) {
+                console.error("Erreur lors du chargement :", err);
+            }
+        }
+
+        async function changerStatut(id, nouveauStatut) {
+            try {
+                await fetch(`http://localhost:5000/api/inscription/${id}`, {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ statut: nouveauStatut })
+                });
+            } catch (err) {
+                alert("Impossible de modifier le statut.");
+            }
+        }
+
+        function exporterEnCSV() {
+            if (listeInscriptions.length === 0) {
+                alert("Aucune donnée à exporter !");
+                return;
+            }
+
+            let contenuCSV = "\uFEFFDate;Nom Complet;Telephone;Formation;Ville;Statut\n";
+
+            listeInscriptions.forEach(item => {
+                const ligne = `"${item.date || ''}";"${item.nom}";"${item.telephone}";"${item.formation}";"${item.ville}";"${item.statut || 'En attente'}"`;
+                contenuCSV += ligne + "\n";
+            });
+
+            const blob = new Blob([contenuCSV], { type: 'text/csv;charset=utf-8;' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `Inscriptions_Digital_Excel_Academy.csv`;
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+    </script>
+</body>
+</html>
