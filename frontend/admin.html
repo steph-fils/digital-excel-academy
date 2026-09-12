@@ -80,7 +80,7 @@
 
         async function chargerInscriptions() {
             try {
-                const res = await fetch('http://localhost:5000/api/inscriptions');
+                const res = await fetch('https://digital-excel-academy.onrender.com/api/inscriptions');
                 listeInscriptions = await res.json();
 
                 const tbody = document.getElementById('tableauInscriptions');
@@ -117,7 +117,7 @@
 
         async function changerStatut(id, nouveauStatut) {
             try {
-                await fetch(`http://localhost:5000/api/inscription/${id}`, {
+                await fetch(`https://digital-excel-academy.onrender.com/api/inscription/${id}`, {
                     method: 'PUT',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ statut: nouveauStatut })
