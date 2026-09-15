@@ -11,16 +11,16 @@
     <!-- 1. Formulaire de connexion -->
     <div id="zoneConnexion" class="max-w-md mx-auto mt-20 bg-slate-800 p-8 rounded-2xl border border-slate-700 shadow-xl">
         <h2 class="text-2xl font-bold text-center text-white mb-6">Connexion Admin</h2>
-        <div class="space-y-4">
+        <form onsubmit="verifierMotDePasse(event)" class="space-y-4">
             <div>
                 <label class="block text-sm font-medium mb-1">Mot de passe secret</label>
                 <input type="password" id="motDePasse" placeholder="Entrez le mot de passe" class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 text-white focus:outline-none focus:border-yellow-500">
             </div>
-            <button onclick="verifierMotDePasse()" class="w-full bg-yellow-500 hover:bg-yellow-400 text-slate-950 font-bold py-3 rounded-xl transition">
+            <button type="submit" class="w-full bg-yellow-500 hover:bg-yellow-400 text-slate-950 font-bold py-3 rounded-xl transition">
                 Accéder au tableau de bord
             </button>
             <p id="erreurPass" class="text-red-400 text-sm text-center hidden">Mot de passe incorrect !</p>
-        </div>
+        </form>
     </div>
 
     <!-- 2. Tableau de bord -->
@@ -30,12 +30,15 @@
                 <h1 class="text-3xl font-extrabold text-white">Espace Administration</h1>
                 <p class="text-slate-400 text-sm">Gestion des pré-inscriptions des étudiants</p>
             </div>
-            <div class="flex gap-3">
+            <div class="flex flex-wrap gap-3">
                 <button onclick="exporterEnCSV()" class="bg-green-600 hover:bg-green-500 text-white font-semibold px-4 py-2.5 rounded-xl transition flex items-center gap-2">
                     📊 Exporter sur Excel (CSV)
                 </button>
                 <button onclick="chargerInscriptions()" class="bg-slate-800 hover:bg-slate-700 text-white px-4 py-2.5 rounded-xl border border-slate-700 transition">
                     🔄 Rafraîchir
+                </button>
+                <button onclick="deconnexion()" class="bg-red-600/20 hover:bg-red-600 text-red-400 hover:text-white px-4 py-2.5 rounded-xl border border-red-500/30 transition">
+                    Déconnexion
                 </button>
             </div>
         </div>
@@ -63,30 +66,54 @@
 
     <script>
         const CODE_SECRET = "admin123";
+        const API_URL = "https://digital-excel-academy.onrender.com/api";
         let listeInscriptions = [];
 
-        function verifierMotDePasse() {
+        // Vérification de la session au chargement
+        window.addEventListener('DOMContentLoaded', () => {
+            if (sessionStorage.getItem('admin_session') === 'active') {
+                afficherDashboard();
+            }
+        });
+
+        function verifierMotDePasse(event) {
+            if (event) event.preventDefault();
             const saisie = document.getElementById('motDePasse').value;
             const erreur = document.getElementById('erreurPass');
 
             if (saisie === CODE_SECRET) {
-                document.getElementById('zoneConnexion').classList.add('hidden');
-                document.getElementById('zoneAdmin').classList.remove('hidden');
-                chargerInscriptions();
+                sessionStorage.setItem('admin_session', 'active');
+                erreur.classList.add('hidden');
+                afficherDashboard();
             } else {
                 erreur.classList.remove('hidden');
             }
         }
 
+        function afficherDashboard() {
+            document.getElementById('zoneConnexion').classList.add('hidden');
+            document.getElementById('zoneAdmin').classList.remove('hidden');
+            chargerInscriptions();
+        }
+
+        function deconnexion() {
+            sessionStorage.removeItem('admin_session');
+            document.getElementById('zoneAdmin').classList.add('hidden');
+            document.getElementById('zoneConnexion').classList.remove('hidden');
+            document.getElementById('motDePasse').value = '';
+        }
+
         async function chargerInscriptions() {
+            const tbody = document.getElementById('tableauInscriptions');
+            tbody.innerHTML = '<tr><td colspan="6" class="p-4 text-center text-slate-400">Chargement des données...</td></tr>';
+
             try {
-                const res = await fetch('https://digital-excel-academy.onrender.com/api/inscriptions');
+                const res = await fetch(`${API_URL}/inscriptions`);
                 listeInscriptions = await res.json();
 
-                const tbody = document.getElementById('tableauInscriptions');
                 tbody.innerHTML = '';
 
-                if (listeInscriptions.length === 0) {
+                if (!listeInscriptions || listeInscriptions.length === 0) {
                     tbody.innerHTML = '<tr><td colspan="6" class="p-4 text-center text-slate-400">Aucune inscription pour le moment.</td></tr>';
                     return;
                 }
@@ -112,12 +139,13 @@
                 });
             } catch (err) {
                 console.error("Erreur lors du chargement :", err);
+                tbody.innerHTML = '<tr><td colspan="6" class="p-4 text-center text-red-400">Erreur de connexion au serveur Render. Veuillez rafraîchir.</td></tr>';
             }
         }
 
         async function changerStatut(id, nouveauStatut) {
             try {
-                await fetch(`https://digital-excel-academy.onrender.com/api/inscription/${id}`, {
+                await fetch(`${API_URL}/inscription/${id}`, {
                     method: 'PUT',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ statut: nouveauStatut })
@@ -128,7 +156,7 @@
         }
 
         function exporterEnCSV() {
-            if (listeInscriptions.length === 0) {
+            if (!listeInscriptions || listeInscriptions.length === 0) {
                 alert("Aucune donnée à exporter !");
                 return;
             }
