@@ -93,5 +93,5 @@ app.put('/api/inscription/:id', (req, res) => {
     }
 });
 app.listen(PORT, () => {
-    console.log(`Serveur démarré sur http://localhost:${PORT}`);
+    console.log(`Serveur démarré sur https://localhost:${PORT}`);
 });
